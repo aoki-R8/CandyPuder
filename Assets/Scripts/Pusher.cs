@@ -13,6 +13,7 @@ public class Pusher : MonoBehaviour
         Debug.Log("ゲームが開始した");
     }
 
+    public Rigidbody rb;
     // Update is called once per frame
     void Update()
     {
@@ -22,6 +23,7 @@ public class Pusher : MonoBehaviour
         // 自身のローカル座標の位置を　最初の位置情報に　ｚ(sin波の変動値)を加算して返す
         //this.transform,localPosition
         //↑　このコードがアタッチ(入っている)されているオブジェクトのローカル座標の情報
-        this.transform.localPosition = startPosition + new Vector3(0, 0, z);
+        //this.transform.localPosition = startPosition + new Vector3(0, 0, z);
+        rb.linearVelocity = new Vector3(0, 0, z);
     }
 }
