@@ -16,8 +16,13 @@ public class StageOut : MonoBehaviour
 
     // このコードがアタッチされているオブジェクトのisTrigger(コライダー設定)が有効
     // かつ他のオブジェクトがすり抜けた時に中の処理を行うイベント関数
+
+    public AudioManager audiomanager;
+
     void OnTriggerEnter(Collider other)
     {
+        audiomanager.PlaySE();
+
         SCORE += 1;
         Debug.Log($"SCORE: {SCORE}");
         SCOREText.text = ($"SCORE:{SCORE}");
