@@ -23,6 +23,15 @@ public class StageOut : MonoBehaviour
     {
         audiomanager.PlaySE();
 
+        if (SCORE >= 10)
+        {
+            if (audiomanager.bgmAudiosource.clip != audiomanager.bgmAudioClips[1])
+            {
+                audiomanager.bgmAudiosource.clip = audiomanager.bgmAudioClips[1];
+                audiomanager.bgmAudiosource.Play();
+            }
+        }
+
         SCORE += 1;
         Debug.Log($"SCORE: {SCORE}");
         SCOREText.text = ($"SCORE:{SCORE}");
@@ -33,6 +42,9 @@ public class StageOut : MonoBehaviour
         // Destroy(破棄したいオブジェクト)
         // オブジェクトが使用しているメモリの解放(ガベージコレクション)と描画情報の破棄
         Destroy(other.gameObject);
+
+        
+
     }
    
 }
