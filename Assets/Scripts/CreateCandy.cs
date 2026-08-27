@@ -11,7 +11,7 @@ public class CreateCandy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame) 
+        if (Keyboard.current.aKey.wasPressedThisFrame) 
         {
             GameObject instantiatedCandy = Instantiate(candyPrefab);
             instantiatedCandy.transform.position = this.transform.position;
