@@ -1,8 +1,11 @@
 using UnityEngine;
+using System;
 using UnityEngine.InputSystem;
 
 public class CreateCandy : MonoBehaviour
 {
+    public StageOut stageout;
+
     [SerializeField]
     private GameObject candyPrefab;
 
@@ -11,10 +14,23 @@ public class CreateCandy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.aKey.wasPressedThisFrame) 
+        
+
+       
+    }
+
+    public void OnReceiveClick()
+    {
+        int number = stageout.SCORE;
+        
+        if(number > 0)
         {
+            stageout.SCORE += -1;
+            stageout.SCOREText.text = $"{stageout.SCORE}";
             GameObject instantiatedCandy = Instantiate(candyPrefab);
             instantiatedCandy.transform.position = this.transform.position;
-        }   
+        }
+
+        
     }
 }

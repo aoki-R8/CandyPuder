@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.InputSystem;
 
 public class StageOut : MonoBehaviour
 {
-    public int SCORE = 0 ;
+    public int SCORE = 20 ;
 
     public Text SCOREText;
     // 来週の頭(一限)に適当に選んだ3人を当てる予定
@@ -19,22 +20,18 @@ public class StageOut : MonoBehaviour
 
     public AudioManager audiomanager;
 
+    void Start()
+    {
+        SCOREText.text = ($"{SCORE}");
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        audiomanager.PlaySE();
-
-        if (SCORE >= 10)
-        {
-            if (audiomanager.bgmAudiosource.clip != audiomanager.bgmAudioClips[1])
-            {
-                audiomanager.bgmAudiosource.clip = audiomanager.bgmAudioClips[1];
-                audiomanager.bgmAudiosource.Play();
-            }
-        }
+       
 
         SCORE += 1;
         Debug.Log($"SCORE: {SCORE}");
-        SCOREText.text = ($"SCORE:{SCORE}");
+        SCOREText.text = ($"{SCORE}");
         // 変数名 otherってなに？
         // A.すり抜けた相手のコライダー情報
         Debug.Log($"{other.name}がすり抜けました。");
@@ -43,8 +40,17 @@ public class StageOut : MonoBehaviour
         // オブジェクトが使用しているメモリの解放(ガベージコレクション)と描画情報の破棄
         Destroy(other.gameObject);
 
-        
-
     }
-   
+
+    //void Update()
+    //{
+    //   if (Keyboard.current.aKey.wasPressedThisFrame && SCORE >0)
+    //   {
+    //SCORE += -1;
+    //SCOREText.text = ($"{SCORE}");
+    // }
+    //}
+
+    
+
 }

@@ -24,6 +24,9 @@ public class Pusher : MonoBehaviour
         //this.transform,localPosition
         //↑　このコードがアタッチ(入っている)されているオブジェクトのローカル座標の情報
         //this.transform.localPosition = startPosition + new Vector3(0, 0, z);
-        rb.linearVelocity = new Vector3(0, 0, z);
+
+        this.transform.localPosition = startPosition + new Vector3(0, 0, z);
+
+        //rb.linearVelocity = new Vector3(0, 0, z);
     }
 }
