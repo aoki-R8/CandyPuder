@@ -1,9 +1,11 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class Enemy : MonoBehaviour
 {
+    public int maxHp = 2;
     public int hp = 2;
     public TextMeshProUGUI hpText;
     public StageOut stageout;
@@ -11,10 +13,10 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameObject AttackButton = GameObject.Find("Attack");
+        AttackButton.GetComponent<Button>().onClick.AddListener(OnReceiveAttacked);
 
-        hp = 2;
-
-        // 1. ヒエラルキーの "HPText" という名前のテキストを自動割り当て
+                // 1. ヒエラルキーの "HPText" という名前のテキストを自動割り当て
         if (hpText == null)
         {
             GameObject textObj = GameObject.Find("HPText");
@@ -61,12 +63,9 @@ public class Enemy : MonoBehaviour
 
     }
 
-    void UpdateHPUI()
+    public void UpdateHPUI()
     {
-        if (hpText != null)
-        {
-            hpText.text = $"HP: {hp}";
-        }
+        hpText.text = $"HP: {hp}";
     }
 
     void Defeat()
