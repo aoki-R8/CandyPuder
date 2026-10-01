@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
 
     void Defeat()
     {
-        stageout.SCORE *= 2;
+        stageout.SCORE += 4;
         stageout.SCOREText.text = $"{stageout.SCORE}";
 
         Destroy(gameObject);
